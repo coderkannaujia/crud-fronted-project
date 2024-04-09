@@ -3,13 +3,14 @@ import "./user.css";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import axios from "axios";
+const baseurl = "https://mern-crud-app-c82h.onrender.com"
 
 const User = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get("http://localhost:4000/api/getall");
+      const response = await axios.get(`${baseurl}/api/getall`);
       setUsers(response.data);
     };
     fetchData();
@@ -18,7 +19,7 @@ const User = () => {
   
   const deleteUser = async (userId) => {
     await axios
-      .delete(`http://localhost:4000/api/deletuser/${userId}`)
+      .delete(`${baseurl}/api/deletuser/${userId}`)
       .then((response) => {
         setUsers((prevUser) => prevUser.filter((user) => user._id !== userId));
         toast.success(response.data.

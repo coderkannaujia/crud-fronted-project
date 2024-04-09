@@ -3,6 +3,7 @@ import "./add.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
+const baseurl = "https://mern-crud-app-c82h.onrender.com"
 
 const Add = () => {
   const users = {
@@ -23,7 +24,7 @@ const Add = () => {
   const submitForm = async (e) => {
     e.preventDefault();
     await axios
-      .post("http://localhost:4000/api/create", user)
+      .post(`${baseurl}/api/create`, user)
       .then((response) => {
         toast.success(response.data.
           message, { position: "top-right" });

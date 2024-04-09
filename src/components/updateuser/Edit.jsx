@@ -3,6 +3,7 @@ import "../adduser/add.css";
 import axios from "axios"
 import toast from 'react-hot-toast'
 import { Link, useNavigate, useParams } from "react-router-dom";
+const baseurl = "https://mern-crud-app-c82h.onrender.com"
 
 const Edit = () => {
 
@@ -38,7 +39,7 @@ const Edit = () => {
    
      const submitForm = async(e)=>{
       e.preventDefault();
-      await axios.put(`http://localhost:4000/api/update/${id}`, user)
+      await axios.put(`${baseurl}/api/update/${id}`, user)
       .then((response) => {
         toast.success(response.data.msg, { position: "top-right" });
         navigate("/")
